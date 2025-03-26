@@ -1,0 +1,39 @@
+game_slug: league-of-legends
+name: League of Legends
+runner: wine
+slug: league-of-legends-custom
+version: Standard NA
+
+script:
+  files:
+    - lol_installer: https://lol.secure.dyn.riotcdn.net/channels/public/x/installer/current/live.na.exe
+  
+  game:
+    exe: "$GAMEDIR/drive_c/Riot Games/Riot Client/RiotClientServices.exe"
+    args: --launch-product=league_of_legends --launch-patchline=live
+    prefix: $GAMEDIR
+  
+  installer:
+    - task:
+        name: create_prefix
+        prefix: $GAMEDIR
+    
+    - task:
+        name: wineexec
+        prefix: $GAMEDIR
+        executable: $lol_installer
+        description: "Please complete the League of Legends installation. Do not log in during setup."
+    
+    - task:
+        name: winekill
+        prefix: $GAMEDIR
+  
+  system:
+    env:
+      DXVK_LOG_LEVEL: none
+      STAGING_SHARED_MEMORY: "1"
+      WINE_LARGE_ADDRESS_AWARE: "1"
+      __GL_SHADER_DISK_CACHE: "1"
+  
+  wine:
+    version: lutris-GE-Proton8-27-LoL
