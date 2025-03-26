@@ -1,2 +1,3 @@
-# scripts-que-irei-usar
-simplesmente alguns scripts que eu irei usar no futuro
+# Pequena explicacao
+
+1 linuxol um simples script pra baixar lol no lutris (yaml)
